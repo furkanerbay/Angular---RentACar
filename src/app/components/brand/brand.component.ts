@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Brand } from 'src/app/models/entities/brand';
 import { BrandResponseModel } from 'src/app/models/responseModel/brandResponseModel';
+import { BrandService } from 'src/app/services/brand/brand.service';
 
 @Component({
   selector: 'app-brand',
@@ -10,15 +12,8 @@ import { BrandResponseModel } from 'src/app/models/responseModel/brandResponseMo
 })
 export class BrandComponent implements OnInit{
   brands:Brand[] = [];
-  apiUrl = "https://localhost:44304/api/brands/getall";
 
-  brandResponseModel : BrandResponseModel = {
-    data : this.brands,
-    message : "",
-    success : true
-  }
-
-  constructor(private httpClient:HttpClient)
+  constructor(private brandService:BrandService,private httpClient:HttpClient)
   {
 
   }
@@ -29,8 +24,10 @@ export class BrandComponent implements OnInit{
 
   getBrands()
   {
-    this.httpClient.get<BrandResponseModel>(this.apiUrl)
-    .subscribe((response) => this.brands = response.data)
+    this.brandService.getBrands().subscribe(response =>
+      {
+        this.brands = response.data;
+      })
   }
 
 

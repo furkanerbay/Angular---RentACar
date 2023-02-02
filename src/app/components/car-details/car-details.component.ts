@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Car } from 'src/app/models/entities/car';
 import { CarResponseModel } from 'src/app/models/responseModel/carResponseModel';
+import { CarDetailsService } from 'src/app/services/car-details/car-details.service';
 
 
 @Component({
@@ -10,17 +13,16 @@ import { CarResponseModel } from 'src/app/models/responseModel/carResponseModel'
   styleUrls: ['./car-details.component.css']
 })
 export class CarDetailsComponent implements OnInit {
-
   cars:Car[] = [];
-  apiUrl = "https://localhost:44304/api/cars/getbycardetails"
+  dataLoaded = false;
 
   carResponseModel:CarResponseModel = {
     data : this.cars,
     message : " ",
-    success : true
+    success : true,
   };
 
-  constructor(private httpClient : HttpClient)
+  constructor(private carDetailsService:CarDetailsService,private httpClient : HttpClient)
   {
 
   }
@@ -32,8 +34,12 @@ export class CarDetailsComponent implements OnInit {
 
   getCars()
   {
-    this.httpClient.get<CarResponseModel>(this.apiUrl)
-    .subscribe((response) => {this.cars = response.data});
+    this.carDetailsService.getCarDetails()
+    .subscribe((response) => 
+    {
+      this.cars = response.data;
+      this.dataLoaded = true;
+    });
   }
 
 }
