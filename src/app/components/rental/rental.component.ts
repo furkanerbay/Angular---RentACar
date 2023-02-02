@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Rental } from 'src/app/models/entities/rental';
 import { RentalResponseModel } from 'src/app/models/responseModel/rentalResponseModel';
 import { ResponseModel } from 'src/app/models/responseModel/responseModel';
-import { RentalService } from 'src/app/services/rental.service';
+import { RentalService } from 'src/app/services/rental/rental.service';
 
 @Component({
   selector: 'app-rental',
