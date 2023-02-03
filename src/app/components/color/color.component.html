@@ -1,6 +1,13 @@
 <div>
-    <h1>Renkler</h1>
-  </div>
+  <h1>Renkler</h1>
+</div>
 <ul class="list-group">
-    <li *ngFor="let color of colors" class="list-group-item">{{color.name}}</li>
+  <li
+    *ngFor="let color of colors"
+    routerLink="cars/color/{{ color.id }}"
+    [class]="getCurrentColorClass(color)"
+    (click)="setCurrentColor(color)"
+  >
+    {{ color.name }}
+  </li>
 </ul>

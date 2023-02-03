@@ -1,15 +1,18 @@
 <button *ngIf="dataLoaded == false" class="btn btn-dark" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span
+    class="spinner-border spinner-border-sm"
+    role="status"
+    aria-hidden="true"
+  ></span>
   Loading...
 </button>
 
-  <div *ngFor="let car of cars" class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+<div *ngFor="let car of cars" class="card" style="width: 18rem">
+  <!-- <img src="..." class="card-img-top" alt="..." /> -->
   <div class="card-body">
-    <h5 class="card-title">{{car.carName}}</h5>
-    <p class="card-text">{{car.colorName}}</p>
-    <p class="card-text">{{car.brandName}}</p>
+    <h5 class="card-title">{{ car.carName }}</h5>
+    <p class="card-text">{{ car.colorName }}</p>
+    <p class="card-text">{{ car.brandName }}</p>
     <a href="#" class="btn btn-primary">Araba Detaylarina Git</a>
   </div>
 </div>
-
