@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brand } from 'src/app/models/entities/brand';
-import { BrandResponseModel } from 'src/app/models/responseModel/brandResponseModel';
 import { BrandService } from 'src/app/services/brand/brand.service';
 
 @Component({

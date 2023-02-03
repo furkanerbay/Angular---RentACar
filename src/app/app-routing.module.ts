@@ -6,7 +6,7 @@ const routes: Routes = [
   {path:"cars",pathMatch:'full',component:CarDetailsComponent},
   {path:"cars/brand/:brandId",pathMatch:'full',component:CarDetailsComponent},
   {path:"cars/color/:colorId",pathMatch:'full',component:CarDetailsComponent},
-  {path:"cars/brandandcolor/brand/:brandId/color/:colorId",pathMatch:'full',component:CarDetailsComponent}
+  {path:"cars/brandandcolor/brand/:brandId/color/:colorId",pathMatch:'full',component:CarDetailsComponent},
 ];
 
 @NgModule({

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Color } from 'src/app/models/entities/color';
-import { ColorResponseModel } from 'src/app/models/responseModel/colorResponseModel';
 import { ColorService } from 'src/app/services/color/color.service';
 
 @Component({

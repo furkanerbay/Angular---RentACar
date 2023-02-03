@@ -1,11 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Brand } from 'src/app/models/entities/brand';
+import { VirtualTimeScheduler } from 'rxjs';
 import { Car } from 'src/app/models/entities/car';
-import { CarResponseModel } from 'src/app/models/responseModel/carResponseModel';
 import { CarDetailsService } from 'src/app/services/car-details/car-details.service';
 
 @Component({
@@ -16,6 +13,9 @@ import { CarDetailsService } from 'src/app/services/car-details/car-details.serv
 export class CarDetailsComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
+  currentCar:Car;
+    
+    imageUrl = "https://localhost:44304";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -92,5 +92,19 @@ export class CarDetailsComponent implements OnInit {
         this.cars = response.data;
         this.dataLoaded = true;
       });
+  }
+
+  getCarImage(car:Car)
+  {
+    if(car.imagePath == null)
+    {
+      let path = this.imageUrl + "/Upload/Images/Default.jpg";
+      return path;
+    }
+    else
+    {
+      let path = this.imageUrl + "/Upload/Images/" + car.imagePath;
+      return path;
+    }
   }
 }
