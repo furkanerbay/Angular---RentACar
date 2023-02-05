@@ -7,12 +7,28 @@
   Loading...
 </button>
 
-<div *ngFor="let car of cars" class="card" style="width: 18rem">
-   <img [src]="getCarImage(car)" class="card-img-top" width="300" height="200" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ car.carName }}</h5>
-    <p class="card-text">{{ car.colorName }}</p>
-    <p class="card-text">{{ car.brandName }}</p>
-    <a href="#" class="btn btn-primary">Araba Detaylarina Git</a>
+<div class="row">
+  <div *ngFor="let car of cars" class="col-lg-4 col-md-3 col-sm-12">
+    <div class="card mb-2">
+      <img
+        [src]="getCarImage(car)"
+        class="card-img-top"
+        width="300"
+        height="200"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ car.carName }}</h5>
+        <p class="card-text">{{ car.colorName }}</p>
+        <p class="card-text">{{ car.brandName }}</p>
+        <a
+          href="#"
+          class="btn btn-primary"
+          (click)="setCurrentCarDetail(car)"
+          routerLink="/cars/car-detail-page/{{ car.id }}"
+          >Araba Detaylarina Git</a
+        >
+      </div>
+    </div>
   </div>
 </div>

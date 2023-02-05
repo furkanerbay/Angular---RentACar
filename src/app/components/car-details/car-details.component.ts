@@ -13,14 +13,12 @@ import { CarDetailsService } from 'src/app/services/car-details/car-details.serv
 export class CarDetailsComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
-  currentCar:Car;
-    
-    imageUrl = "https://localhost:44304";
+  currentCar: Car;
+  imageUrl = 'https://localhost:44304';
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private carDetailsService: CarDetailsService,
-    private httpClient: HttpClient
+    private carDetailsService: CarDetailsService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +27,6 @@ export class CarDetailsComponent implements OnInit {
       //let { colorId, brandId } = params;
       //colorId = +(colorId || 0);
       //brandId = +(brandId || 0);
-      //console.log(params)
 
       //if (colorId > 0 && brandId > 0) {
       //  this.getCarsByColorAndBrand(params['colorId'], params['brandId']);
@@ -41,26 +38,15 @@ export class CarDetailsComponent implements OnInit {
       //  this.getCars();
       //}
 
-      if(params["brandId"])
-      {
-        this.getCarsByBrand(params["brandId"])
-      }
-      
-      else if(params["colorId"])
-      {
-        this.getCarsByColor(params["colorId"]);
-      }
-
-      else if(params["colorId"] && params["brandId"])
-      {
-        this.getCarsByColorAndBrand(params["colorId"] , params["brandId"])
-      }
-
-      else
-      {
+      if (params['brandId']) {
+        this.getCarsByBrand(params['brandId']);
+      } else if (params['colorId']) {
+        this.getCarsByColor(params['colorId']);
+      } else if (params['colorId'] && params['brandId']) {
+        this.getCarsByColorAndBrand(params['colorId'], params['brandId']);
+      } else {
         this.getCars();
       }
-
     });
   }
 
@@ -94,16 +80,16 @@ export class CarDetailsComponent implements OnInit {
       });
   }
 
-  getCarImage(car:Car)
-  {
-    if(car.imagePath == null)
-    {
-      let path = this.imageUrl + "/Upload/Images/Default.jpg";
+  setCurrentCarDetail(car: Car) {
+    this.currentCar = car;
+  }
+
+  getCarImage(car: Car) {
+    if (car.imagePath == null) {
+      let path = this.imageUrl + '/Upload/Images/Default.jpg';
       return path;
-    }
-    else
-    {
-      let path = this.imageUrl + "/Upload/Images/" + car.imagePath;
+    } else {
+      let path = this.imageUrl + '/Upload/Images/' + car.imagePath;
       return path;
     }
   }

@@ -1,0 +1,27 @@
+<div *ngIf="carDetail" class="card">
+
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div *ngFor="let carimage of carImages" width="300" height="250" [class]="getCurrentImageClass(carimage)">
+        <img [src]="getCarImage(carimage,carDetail.id)" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Onceki</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Sonraki</span>
+    </button>
+  </div>
+
+  
+
+  <div class="card-body">
+    <h5 class="card-title">{{ carDetail.carName }}</h5>
+    <p class="card-text">{{ carDetail.colorName }}</p>
+    <p class="card-text">{{ carDetail.brandName }}</p>
+    <a href="#" class="btn btn-primary"> Sepete Ekle </a>
+  </div>
+</div>
