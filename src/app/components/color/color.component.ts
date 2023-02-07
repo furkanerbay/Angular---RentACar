@@ -10,7 +10,8 @@ import { ColorService } from 'src/app/services/color/color.service';
 })
 export class ColorComponent implements OnInit{
   colors:Color[] = [];
-  currentColor:Color={id:0,name:""}
+  currentColor:Color;
+  clearColor:Color;
 
   constructor(private colorService:ColorService,private httpClient:HttpClient)
   {
@@ -35,7 +36,7 @@ export class ColorComponent implements OnInit{
     this.currentColor = color;
   }
 
-  getCurrentColorClass(color:Color)
+  getCurrentColor(color:Color)
   {
     if(color == this.currentColor)
     {
@@ -45,6 +46,23 @@ export class ColorComponent implements OnInit{
     {
       return "list-group-item";
     }
+  }
+
+  getCurrentColorClass()
+  {
+    if(!this.currentColor)
+    {
+      return "list-group-item active";
+    }
+    else
+    {
+      return "list-group-item";
+    }
+  }
+
+  currentClean()
+  {
+    this.currentColor = this.clearColor;
   }
 
 }

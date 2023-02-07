@@ -2,7 +2,7 @@
 
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
-      <div *ngFor="let carimage of carImages" width="300" height="250" [class]="getCurrentImageClass(carimage)">
+      <div *ngFor="let carimage of carImages" width="250" height="300" [class]="getCurrentImageClass(carimage)">
         <img [src]="getCarImage(carimage,carDetail.id)" class="d-block w-100" alt="...">
       </div>
     </div>

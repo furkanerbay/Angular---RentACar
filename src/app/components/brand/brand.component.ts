@@ -11,11 +11,11 @@ import { BrandService } from 'src/app/services/brand/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands: Brand[] = [];
-  currentBrand: Brand = { id: 0, name: '' };
+  currentBrand: Brand;
+  cleanBrand:Brand;
 
   constructor(
     private brandService: BrandService,
-    private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -32,11 +32,31 @@ export class BrandComponent implements OnInit {
     this.currentBrand = brand;
   }
 
-  getCurrentBrandClass(brand: Brand) {
-    if (brand == this.currentBrand) {
+  getCurrentBrand(brand:Brand) {
+    if (brand == this.currentBrand)
+    {
       return 'list-group-item active';
-    } else {
+    }
+    else
+    {
       return 'list-group-item';
     }
+  }
+
+  getAllBrandClass()
+  {
+    if(!this.currentBrand)
+    {
+      return "list-group-item active";
+    }
+    else
+    {
+      return "list-group-item";
+    }
+  }
+
+  currentClean()
+  {
+    this.currentBrand = this.cleanBrand
   }
 }

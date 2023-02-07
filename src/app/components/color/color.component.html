@@ -2,10 +2,14 @@
   <h1>Renkler</h1>
 </div>
 <ul class="list-group">
+  <li (click)="currentClean()" routerLink="/cars" [class]="getCurrentColorClass()">
+    Tum Renkler
+  </li>
+
   <li
     *ngFor="let color of colors"
     routerLink="cars/color/{{ color.id }}"
-    [class]="getCurrentColorClass(color)"
+    [class]="getCurrentColor(color)"
     (click)="setCurrentColor(color)"
   >
     {{ color.name }}
